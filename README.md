@@ -1,9 +1,9 @@
 # Overview 
+
 The main objective of this project is to analyze customer data to improve promotional strategy and eventually to optimize targeted marketing campaigns by maximizing profits and minimizing advertising cost.
 
 # Dataset
-<img src="https://opj.ca/wp-content/uploads/2018/02/New-Starbucks-Logo-1200x969.jpg" width="200" height="200">
-<br>
+
 The dataset used in this project was originally used as a take-home assignment provided by Starbucks for their job candidates. The data consists of about 120,000 data points split in a 2:1 ratio among training and test files. In the experiment simulated by the data, an advertising promotion was tested to see if it would bring more customers to purchase a specific product priced at $10. Since it costs the company 0.15 to send out each promotion, it would be best to limit that promotion only to those that are most receptive to the promotion. Each data point includes one column indicating whether or not an individual was sent a promotion for the product, and one column indicating whether or not that individual eventually purchased that product. Each individual also has seven additional features associated with them, which are provided abstractly as V1-V7.
 
 # Optimization Metrics
@@ -12,13 +12,7 @@ The promotional strategy will be evaluated on 2 key optimization metrics:
 
 * **Incremental Response Rate (IRR)**: IRR depicts how many more customers purchased the product with the promotion, as compared to if they didn't receive the promotion. Mathematically, it's the ratio of the number of purchasers in the promotion group to the total number of customers in the purchasers group (_treatment_) minus the ratio of the number of purchasers in the non-promotional group to the total number of customers in the non-promotional group (_control_).
 
-$$ IRR = \frac{purch_{treat}}{cust_{treat}} - \frac{purch_{ctrl}}{cust_{ctrl}} $$
-
-
 * **Net Incremental Revenue (NIR)**: NIR depicts how much is made (or lost) by sending out the promotion. Mathematically, this is 10 times the total number of purchasers that received the promotion minus 0.15 times the number of promotions sent out, minus 10 times the number of purchasers who were not given the promotion.
-
-$$ NIR = (10\cdot purch_{treat} - 0.15 \cdot cust_{treat}) - 10 \cdot purch_{ctrl}$$
-
 
 # Sanity Check: Invariant Metrics
 
@@ -54,7 +48,9 @@ Table of actual promotion vs. predicted promotion customers:
 The metrics are only being compared for the individuals we predict should obtain the promotion – that is, quadrants I and II.  Since the first set of individuals that receive the promotion (in the training set) receive it randomly, we can expect that quadrants I and II will have approximately equivalent participants. Comparing quadrant I to II then gives an idea of how well the promotion strategy will work in the future. 
 
 ## Training Set Evaluation 
+
 Several classification models were built and compared. The model with the highest mean ROC AUC was chosen to be used to improve promotional strategy In another word, the model that performs the best in identifying customers who will make a purchase after getting a promotion.
 
 ## Test Set Evaluation 
+
 When having a strategy for who should receive a promotion, we test the strategy against the test dataset used in the final `test_results` function.
